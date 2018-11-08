@@ -1,0 +1,48 @@
+@import "Variables";
+
+.MatchDay {
+    margin: 8px;
+    width: 300px;
+    display: inline-block;
+    /*float: left;*/
+    background: #a6e4ff;
+    border-radius: 6px;
+    border: $primary-border-color 1px solid;
+
+    .Title {
+        font-size: 17px;
+        font-weight: bolder;
+        font-family: "Apple SD Gothic Neo";
+        border-bottom: $primary-border-color 1px solid;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .Matches {
+        padding: 12px 0;
+    }
+
+    .Match {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 8px 0;
+
+        &.Even {
+            color: chocolate;
+        }
+
+        span {
+            &.Home {
+                flex: 3;
+            }
+            &.Separator {
+                flex: 1;
+            }
+            &.Away {
+                flex: 3;
+            }
+        }
+    }
+}

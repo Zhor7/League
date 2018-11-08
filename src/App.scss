@@ -1,0 +1,24 @@
+.App {
+    text-align: center;
+
+    .App-header {
+        background-color: #282c34;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: calc(10px + 2vmin);
+        color: #a6e4ff;
+    }
+
+    main {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .CalendarWrapper {
+            margin-top: 20px;
+        }
+    }
+}
