@@ -1,62 +1,51 @@
-import React, {Component} from 'react';
-import './App.scss';
-import Teamslist from "./Teamslist";
-import Calendar from "./Calendar";
-import CButton from "./CustomButton"
+import React, { Component } from "react";
+import "./App.scss";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import CalendarCreation from "./generateLeague/CalendarCreation";
+import Home from "./Home";
+import Calendar from "./results/Calendar";
 
 class App extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            teams: null,
-            matches: null
-        };
-
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick = () => {
-        this.setState({
-            teams: null,
-            matches: null
-        })
-    };
-
     render() {
 
-        const paintCalendar = (m, t) => {
-            this.setState({
-                teams: t,
-                matches: m
-            })
-        }
-
-        const buttonStyles = {
-            width: '100px',
-            height: '30px'
-        }
+        const CustomLi = ({ label, to, activeOnlyWhenExact }) => {
+            return (
+                <Route
+                    path={to}
+                    exact={activeOnlyWhenExact}
+                    children={({ match }) => (
+                        <li>
+                            <Link className={match ? "active" : ""} to={to}>{label}</Link>
+                        </li>
+                    )}
+                />
+            );
+        };
 
         return (
-            <div className="App">
-                <header className="App-header">
-                    <h1>League Calendar</h1>
-                </header>
-                <main>
-                    {
-                        !this.state.matches && !this.state.teams &&
-                            <Teamslist paintCalendar={paintCalendar}></Teamslist>
-                    }
-                    {
-                        this.state.matches && this.state.teams &&
-                            <div className="CalendarWrapper">
-                                <CButton style={buttonStyles} onClick={this.handleClick}>Back</CButton>
-                                <Calendar matches={this.state.matches} teams={this.state.teams}></Calendar>
-                            </div>
-                    }
-                </main>
-                <footer></footer>
-            </div>
+            <Router>
+                <div className="App">
+                    <header>
+                        <h1>Keytree PES League</h1>
+                        <nav>
+                            <ul>
+                                <CustomLi activeOnlyWhenExact={true} to="/" label="Home"/>
+                                <CustomLi to="/genLeague" label="Generate League"/>
+                                <CustomLi to="/standings" label="Standings"/>
+                                <CustomLi to="/results" label="Results"/>
+                            </ul>
+                        </nav>
+                    </header>
+                    <main>
+                        <Route path="/" exact component={Home}/>
+                        <Route path="/genLeague/" component={CalendarCreation}/>
+                        <Route path="/standings/" component={CalendarCreation}/>
+                        <Route path="/results/" component={Calendar}/>
+                    </main>
+                    <footer></footer>
+                </div>
+            </Router>
         );
     }
 }

@@ -1,0 +1,88 @@
+@import "../Variables";
+
+.MatchDay {
+    margin: 8px;
+    width: 300px;
+    display: inline-block;
+    background: #ffffff;
+    border-radius: 6px;
+    border: $primary-border-color 1px solid;
+
+    .Title {
+        font-size: 18px;
+        font-weight: bolder;
+        font-family: $title-font-family;
+        border-bottom: $primary-border-color 1px solid;
+        width: 100%;
+        padding: 14px 0;
+        background: #f3f3f6;
+        border-radius: 6px 6px 0 0;
+    }
+
+    .Matches {
+        padding: 12px 0;
+    }
+
+    .Match {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 12px 0;
+
+        &.Even {
+            color: chocolate;
+        }
+
+        .Separator {
+            flex: 1;
+        }
+
+        .TeamContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &.Home {
+                flex: 3;
+            }
+            &.Away {
+                flex: 3;
+            }
+
+            img {
+                margin-bottom: 5px;
+            }
+        }
+
+        input {
+            width: 12px;
+            border-width: 0px;
+            font-size: 20px;
+
+            &.filled {
+                cursor: default;
+            }
+            &.void {
+                //background: aquamarine;
+                border: 1px #baccc2 solid;
+            }
+            &:focus {
+                outline: none;
+                background: aliceblue;
+            }
+            &[type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+    }
+
+    .RestTeam {
+        border-top: $primary-border-color 1px solid;
+        padding: 12px 0;
+        color: #096d09;
+        background: #baccc2;
+        border-radius: 0 0 6px 6px;
+    }
+}
