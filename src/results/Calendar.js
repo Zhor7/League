@@ -16,10 +16,12 @@ class Calendar extends Component {
 
         super(props);
 
-        let matchDays;
+        let matchDays,
+            restingTeams;
 
         if (props.league) {
             matchDays = props.league;
+            restingTeams = props.restingTeams;
             this.fromCalendarGenerator = true;
 
         } else {
@@ -27,14 +29,15 @@ class Calendar extends Component {
             axios.get("../matchdays.json")
                 .then(res => {
                     this.setState({
-                        matchDays: res.data.matchdays
+                        matchDays   : res.data.matchdays,
+                        restingTeams: res.data.restingTeams
                     });
                 });
         }
 
         this.state = {
             matchDays   : matchDays,
-            restingTeams: props.restingTeams
+            restingTeams: restingTeams
         };
 
     }

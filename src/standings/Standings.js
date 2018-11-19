@@ -28,7 +28,7 @@ class Standings extends Component {
             <div className="Standings">
                 <div className="Table">
                     <div className="Header">
-                        <span>Team</span>
+                        <span className="Header-FirstCol">Team</span>
                         <span>MP</span>
                         <span>W</span>
                         <span>D</span>
@@ -38,21 +38,21 @@ class Standings extends Component {
                         <span>GD</span>
                         <span>Pts</span>
                     </div>
-                    {standings && standings.map((s, i) =>
+                    {standings && standings.map((row, i) =>
                         <div key={i} className="Body">
-                            <div>
+                            <div className="Body-FirstCol">
                                 <span>{i + 1}</span>
-                                <span><img src={s.team.imageUrl} alt="" width="24" height="24"></img></span>
-                                <span>{s.team.name}</span>
+                                <span><img src={row.team.imageUrl} alt="" width="24" height="24"></img></span>
+                                <span>{row.team.name}</span>
                             </div>
-                            <span>{s.matchsPlayed}</span>
-                            <span>{s.won}</span>
-                            <span>{s.draw}</span>
-                            <span>{s.loss}</span>
-                            <span>{s.goalsFor}</span>
-                            <span>{s.goalsAgainst}</span>
-                            <span>{s.goalDifference}</span>
-                            <span>{s.points}</span>
+                            <span>{row.matchsPlayed}</span>
+                            <span>{row.won}</span>
+                            <span>{row.draw}</span>
+                            <span>{row.loss}</span>
+                            <span>{row.goalsFor}</span>
+                            <span>{row.goalsAgainst}</span>
+                            <span>{row.goalDifference}</span>
+                            <span>{row.points}</span>
                         </div>
                     )}
                 </div>

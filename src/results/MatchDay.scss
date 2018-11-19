@@ -20,60 +20,66 @@
     }
 
     .Matches {
-        padding: 12px 0;
-    }
-
-    .Match {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin: 12px 0;
-
-        &.Even {
-            color: chocolate;
-        }
-
-        .Separator {
-            flex: 1;
-        }
-
-        .TeamContainer {
+        .Match {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            justify-content: center;
             align-items: center;
+            margin: 12px 0;
 
-            &.Home {
+            &.Even {
+                color: chocolate;
+            }
+
+            .Score {
                 flex: 3;
-            }
-            &.Away {
-                flex: 3;
+                display: flex;
+                justify-content: space-around;
+
+                input {
+                    width: 10px;
+                    border: none;
+                    font-size: 17px;
+
+                    &.Filled {
+                        cursor: default;
+                    }
+                    &.Void {
+                        border: 1px #baccc2 solid;
+                    }
+                    &:focus {
+                        outline: #cd0f2a auto 3px;
+                    }
+                    &[type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+                }
             }
 
-            img {
-                margin-bottom: 5px;
-            }
-        }
+            .TeamContainer {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
 
-        input {
-            width: 12px;
-            border-width: 0px;
-            font-size: 20px;
+                &.Home {
+                    flex: 5;
+                }
+                &.Away {
+                    flex: 5;
+                }
 
-            &.filled {
-                cursor: default;
-            }
-            &.void {
-                //background: aquamarine;
-                border: 1px #baccc2 solid;
-            }
-            &:focus {
-                outline: none;
-                background: aliceblue;
-            }
-            &[type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
+                img {
+                    margin-bottom: 5px;
+                }
+
+                .Winner {
+                    font-weight: bold;
+                }
+
+                .Looser {
+
+                }
             }
         }
     }

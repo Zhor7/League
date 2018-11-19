@@ -28,37 +28,42 @@ class MatchDay extends Component {
                 <div className="Title">Matchday {matchDayNumber}</div>
                 <div className="Matches">
                     {
-                        matches.map((match, i) => {
-                            let div;
-                            div = <div key={match.id}
-                                       className={!fromCalendarGeneration && (i % 2 !== 0) ? "Match Even" : "Match"}>
+                        matches.map((match, i) =>
+                            <div key={i}
+                                 className={!fromCalendarGeneration && (i % 2 !== 0) ? "Match Even" : "Match"}>
                                 <div className="TeamContainer Home">
                                     {match.teamA.imageUrl &&
-                                    <img src={match.teamA.imageUrl} alt="" width="35" height="35"></img>}
-                                    <span>{match.teamA.name}</span>
+                                    <img src={match.teamA.imageUrl} alt="" width="26" height="26"></img>}
+                                    <span
+                                        className={match.scoreA > match.scoreB ? "Winner" : "Loser"}>{match.teamA.name}</span>
                                 </div>
 
-                                {fromCalendarGeneration &&
-                                <input type="number" className={typeof(match.scoreA) === "number" ? "filled" : "void"}
-                                       onChange={this.handleChange} defaultValue={match.scoreA} min="0"
-                                       max="50"/>}
 
-                                <div className="Separator">-</div>
+                                <div className="Score">
+                                    {fromCalendarGeneration &&
+                                    <input type="number"
+                                           className={typeof(match.scoreA) === "number" ? "Filled" : "Void"}
+                                           onChange={this.handleChange} defaultValue={match.scoreA} min="0"
+                                           max="50"/>}
 
-                                {fromCalendarGeneration &&
-                                <input type="number" className={typeof(match.scoreB) === "number" ? "filled" : "void"}
-                                       onChange={this.handleChange} defaultValue={match.scoreB} min="0"
-                                       max="50"/>}
+                                    <span>-</span>
+
+
+                                    {fromCalendarGeneration &&
+                                    <input type="number"
+                                           className={typeof(match.scoreB) === "number" ? "Filled" : "Void"}
+                                           onChange={this.handleChange} defaultValue={match.scoreB} min="0"
+                                           max="50"/>}
+                                </div>
 
                                 <div className="TeamContainer Away">
                                     {match.teamA.imageUrl &&
-                                    <img src={match.teamB.imageUrl} alt="" width="35" height="35"></img>}
-                                    <span>{match.teamB.name}</span>
+                                    <img src={match.teamB.imageUrl} alt="" width="26" height="26"></img>}
+                                    <span
+                                        className={match.scoreB > match.scoreA ? "Winner" : "Loser"}>{match.teamB.name}</span>
                                 </div>
-                            </div>;
-
-                            return div;
-                        })
+                            </div>
+                        )
                     }
                 </div>
                 {restingTeam && <div className="RestTeam">{restingTeam} rests</div>}
