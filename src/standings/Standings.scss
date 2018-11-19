@@ -1,0 +1,68 @@
+.Standings {
+    background: #f2f2f2;
+
+    .Table {
+        background: #ffffff;
+        margin: 20px 0;
+        padding: 10px 20px;
+        width: 50%;
+        min-width: 400px;
+        display: inline-block;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+
+        .Header {
+            display: flex;
+            padding: 10px 0;
+            font-size: 12px;
+            line-height: 12px;
+            color: rgba(0,0,0,.54);
+            border-bottom: 1px solid #DFE1E5;
+
+            span {
+                flex: 1;
+                text-align: center;
+
+                &:first-child {
+                    flex: 15;
+                    text-align: left;
+                }
+            }
+        }
+        .Body {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            height: 40px;
+            border-bottom: 1px solid #DFE1E5;
+
+            span {
+                flex: 1;
+                text-align: center;
+            }
+
+            div {
+                flex: 15;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+
+                span {
+                    text-align: left;
+                }
+
+                img {
+                    padding: 0 8px;
+                }
+
+                span:first-child {
+                    margin-left: 10px;
+                }
+
+                span:last-child {
+                    flex: 18
+                }
+            }
+        }
+    }
+}

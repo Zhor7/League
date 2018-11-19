@@ -44,13 +44,13 @@ class Calendar extends Component {
 
         return (
             <div className="Calendar">
-                {matchDays && matchDays.map((x, i) => {
+                {matchDays && matchDays.map((matchDay, i) => {
                     let restingTeam = restingTeams ? restingTeams[i] : null;
                     return (
                         <MatchDay
                             key={i}
                             fromCalendarGeneration={!this.fromCalendarGenerator}
-                            matches={x.matches}
+                            matches={matchDay.matches}
                             matchDayNumber={i + 1}
                             restingTeam={restingTeam}
                         />

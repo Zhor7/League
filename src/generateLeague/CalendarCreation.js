@@ -9,8 +9,9 @@ class CalendarCreation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            teams  : null,
-            matches: null
+            league      : null,
+            restingTeams: null,
+            teams       : null
         };
 
         this.handleClick = this.handleClick.bind(this);
@@ -18,16 +19,17 @@ class CalendarCreation extends Component {
 
     handleClick = () => {
         this.setState({
-            league: null,
-            restingTeams  : null
+            league      : null,
+            restingTeams: null
         });
     };
 
     render() {
-        const paintCalendar = (m, r) => {
+        const paintCalendar = (m, r, t) => {
             this.setState({
-                league: m,
-                restingTeams  : r
+                league      : m,
+                restingTeams: r,
+                teams       : t
             });
         };
 
@@ -39,7 +41,7 @@ class CalendarCreation extends Component {
         return (
             <div>
                 {
-                    !this.state.league && <Teamslist paintCalendar={paintCalendar}></Teamslist>
+                    !this.state.league && <Teamslist teams={this.state.teams} paintCalendar={paintCalendar}></Teamslist>
                 }
                 {
                     this.state.league && <div className="CalendarWrapper">

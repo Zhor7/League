@@ -6,13 +6,14 @@ const maxTeamCount = 20;
 const pivot = 2;
 const restingTeam = "REST";
 const randomStart = true;
+const defaultTeamsCount = 2;
 
 
 class Teamslist extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { teamsCount: 2 };
+        this.state = { teamsCount: (props.teams && props.teams.length) || defaultTeamsCount, teams: props.teams };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -161,6 +162,8 @@ class Teamslist extends Component {
                     }
                 });
             });
+
+            teams.splice(teams.length - 1);
         }
 
 
@@ -237,7 +240,7 @@ class Teamslist extends Component {
             });
         });
 
-        this.props.paintCalendar(league, restingTeams);
+        this.props.paintCalendar(league, restingTeams, teams);
     };
 
     handleSubmit = (event) => {
@@ -272,7 +275,8 @@ class Teamslist extends Component {
                         [...Array(this.state.teamsCount)].map((x, i) =>
                             <label key={i} htmlFor={"team" + i}>
                                 <span>Team {i + 1}:</span>
-                                <input required type="text" name={"team" + i} key={i}/>
+                                <input required type="text" name={"team" + i} key={i}
+                                       defaultValue={this.state.teams && this.state.teams[i]}/>
                             </label>
                         )
                         }
