@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Calendar.scss";
-import axios from "axios/index";
 import MatchDay from "./MatchDay";
+import { getLeagueResults } from "../services/Services";
 
 class Calendar extends Component {
 
@@ -25,14 +25,12 @@ class Calendar extends Component {
             this.fromCalendarGenerator = true;
 
         } else {
-            // axios.get("http://172.16.1.232:8080/api/v1/leagues/17")
-            axios.get("../matchdays.json")
-                .then(res => {
-                    this.setState({
-                        matchDays   : res.data.matchdays,
-                        restingTeams: res.data.restingTeams
-                    });
+            getLeagueResults(res => {
+                this.setState({
+                    matchDays   : res.data.matchdays,
+                    restingTeams: res.data.restingTeams
                 });
+            });
         }
 
         this.state = {

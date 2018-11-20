@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Standings.scss";
-import axios from "axios/index";
+import { getLeagueStandings } from "../services/Services";
 
 class Standings extends Component {
 
@@ -11,13 +11,11 @@ class Standings extends Component {
     constructor(props) {
 
         super(props);
-        // axios.get("http://172.16.1.232:8080/api/v1/leagues/17")
-        axios.get("../standings.json")
-            .then(res => {
-                this.setState({
-                    standings: res.data.standings
-                });
+        getLeagueStandings(res => {
+            this.setState({
+                standings: res.data
             });
+        });
 
     }
 
@@ -38,22 +36,25 @@ class Standings extends Component {
                         <span>GD</span>
                         <span>Pts</span>
                     </div>
-                    {standings && standings.map((row, i) =>
-                        <div key={i} className="Body">
-                            <div className="Body-FirstCol">
-                                <span>{i + 1}</span>
-                                <span><img src={row.team.imageUrl} alt="" width="24" height="24"></img></span>
-                                <span>{row.team.name}</span>
-                            </div>
-                            <span>{row.matchsPlayed}</span>
-                            <span>{row.won}</span>
-                            <span>{row.draw}</span>
-                            <span>{row.loss}</span>
-                            <span>{row.goalsFor}</span>
-                            <span>{row.goalsAgainst}</span>
-                            <span>{row.goalDifference}</span>
-                            <span>{row.points}</span>
-                        </div>
+                    {standings && standings.map((row, i) => {
+                            row.team.image = row.team.image.replace("$dpr", "4.0x");
+
+                            return <div key={i} className="Body">
+                                <div className="Body-FirstCol">
+                                    <span>{i + 1}</span>
+                                    <span><img src={row.team.image} alt="" width="24" height="24"></img></span>
+                                    <span>{row.team.name}</span>
+                                </div>
+                                <span>{row.matchesPlayed}</span>
+                                <span>{row.won}</span>
+                                <span>{row.draw}</span>
+                                <span>{row.loss}</span>
+                                <span>{row.goalsFor}</span>
+                                <span>{row.goalsAgainst}</span>
+                                <span>{row.goalDifference}</span>
+                                <span>{row.points}</span>
+                            </div>;
+                        }
                     )}
                 </div>
             </div>
