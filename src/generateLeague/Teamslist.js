@@ -225,10 +225,12 @@ class Teamslist extends Component {
                 if (k % 2 === 0) {
                     matches.push({
                         teamA: {
-                            name: teams[matchDay[k] - 1]
+                            name: teams[matchDay[k] - 1],
+                            image: null
                         },
                         teamB: {
-                            name: teams[matchDay[k + 1] - 1]
+                            name: teams[matchDay[k + 1] - 1],
+                            image: null
                         }
                     });
                 }

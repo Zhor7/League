@@ -37,7 +37,7 @@ class Standings extends Component {
                         <span>Pts</span>
                     </div>
                     {standings && standings.map((row, i) => {
-                            row.team.image = row.team.image.replace("$dpr", "4.0x");
+                            row.team.image = row.team.image && row.team.image.replace("$dpr", "4.0x");
 
                             return <div key={i} className="Body">
                                 <div className="Body-FirstCol">

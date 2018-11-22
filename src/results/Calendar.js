@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Calendar.scss";
 import MatchDay from "./MatchDay";
-import { getLeagueResults } from "../services/Services";
+import { getActiveLeague } from "../services/Services";
 
 class Calendar extends Component {
 
@@ -25,7 +25,7 @@ class Calendar extends Component {
             this.fromCalendarGenerator = true;
 
         } else {
-            getLeagueResults(res => {
+            getActiveLeague(res => {
                 this.setState({
                     matchDays   : res.data.matchdays,
                     restingTeams: res.data.restingTeams

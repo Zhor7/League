@@ -1,0 +1,29 @@
+.SearchLeagues {
+    margin: 0 auto;
+    width: 800px;
+    .League {
+        width: 300px;
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px;
+        padding: 20px;
+        cursor: pointer;
+        --box-shadow-color: rgba(0, 0, 0, 0.16);
+        box-shadow: 0 1px 3px 1px var(--box-shadow-color);
+        transition: background-color 400ms ease-out, box-shadow 400ms ease-out;
+        border: transparent 2px solid;
+        background: white;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.06);
+            //--box-shadow-color: rgba(0, 0, 0, 0.65);
+
+        }
+
+        &.Active {
+            border: #2c35b4 2px solid;
+            --box-shadow-color: #2c35b4;
+        }
+    }
+}

@@ -16,11 +16,11 @@
 
         h1 {
             padding-left: 20px;
-            width: 25%;
+            flex: 35;
         }
 
         nav {
-            width: 75%;
+            flex: 65;
 
             ul {
                 margin: 0;
@@ -51,6 +51,11 @@
                 }
             }
         }
+
+        .IconContainer {
+            flex: 10;
+        }
+
     }
 
     main {
@@ -58,6 +63,7 @@
         width: 100%;
         flex: 8;
         margin-top: 12px;
+        background: #f2f2f2;
     }
 
     footer {
